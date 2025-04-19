@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Книш Саша резюме</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="main">
+<h1>{{name}}</h1>
+<h3>{{position}}</h3>
+<h2>Contacts</h2>
+<ul>
+    {% for contact, link in contacts %}
+        {% if link %}
+            <li><a href={{link}}>{{contact}}</a></li>
+        {% else %}
+            <li>{{contact}}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<h2>summary</h2>
+<p>{{summary}}</p>
+
+<h2>skills</h2>
+<table border ="1">
+    {% for i in range (0, skills|length, 4) %}
+    <tr>
+    {% for j in range(4) %}
+    {% if i + j < skills|length %}
+        <td>{{ skills[i + j] }}</td>
+    {% else %}
+        <td></td>
+    {% endif %}
+    {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<h2>Projects</h2>
+</div>
+</body>
+</html>
